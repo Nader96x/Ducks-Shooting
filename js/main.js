@@ -22,13 +22,13 @@ window.addEventListener("load",function(){
             // console.log(name);
             // window.location.href = "/game.html?name="+name;
             let params = `scrollbars=no,resizable=no,status=no,location=no,toolbar=no,menubar=no,width=0,height=0,left=0,top=0`;
-            let popup = window.open("/game.html?name="+name, 'Ducks Shooting', params);
+            let popup = window.open("game.html?name="+name, 'Ducks Shooting', params);
             // console.log(popup);
             if (popup) {
                 popup.focus();
             } else {    
                 alert('Please allow popups for this website');
-                window.location.href = "/game.html?name="+name;
+                window.location.href = "game.html?name="+name;
             }
             // console.log(popup.closed);
         }
