@@ -6,36 +6,41 @@ class Boom{
         this.boom = document.createElement("img");
         this.boom.src = "imgs/boom.gif";
         this.boom.classList.add("boom");
-        this.boom.width = 150;
-        this.boom.height = 150;
+        this.boom.width = 200;
+        this.boom.height = 200;
 
         this.boom.style.position = "absolute";
         this.boom.style.left = getRandom(0,window.innerWidth-this.boom.width)+"px";
         this.boom.style.top = 0+"px";
         this.boom.onclick = ()=>{
             clearInterval(this.#id);
-            this.top_left = {x:parseInt(this.boom.style.left),y:parseInt(this.boom.style.top)};
-            this.bottom_left = {x:parseInt(this.boom.style.left),y:parseInt(this.boom.style.top)+this.boom.height};
-            this.top_right = {x:parseInt(this.boom.style.left)+this.boom.width,y:parseInt(this.boom.style.top)};
-            this.bottom_right = {x:parseInt(this.boom.style.left)+this.boom.width,y:parseInt(this.boom.style.top)+this.boom.height};
+            // this.top_left = {x:parseInt(this.boom.style.left),y:parseInt(this.boom.style.top)};
+            // this.bottom_left = {x:parseInt(this.boom.style.left),y:parseInt(this.boom.style.top)+this.boom.height};
+            // this.top_right = {x:parseInt(this.boom.style.left)+this.boom.width,y:parseInt(this.boom.style.top)};
+            // this.bottom_right = {x:parseInt(this.boom.style.left)+this.boom.width,y:parseInt(this.boom.style.top)+this.boom.height};
+            this.top = parseInt(this.boom.style.top);
+            this.left = parseInt(this.boom.style.left);
+            this.bottom = parseInt(this.boom.style.top)+this.boom.height;
+            this.right = parseInt(this.boom.style.left)+this.boom.width;
             let birds = document.querySelectorAll("img.bird");
             birds.forEach((bird)=>{
-                let top_left = {x:parseInt(bird.style.left),y:parseInt(bird.style.top)};
-                let bottom_left = {x:parseInt(bird.style.left),y:parseInt(bird.style.top)+bird.height};
-                let top_right = {x:parseInt(bird.style.left)+bird.width,y:parseInt(bird.style.top)};
-                let bottom_right = {x:parseInt(bird.style.left)+bird.width,y:parseInt(bird.style.top)+bird.height};
- 
+                // let top_left = {x:parseInt(bird.style.left),y:parseInt(bird.style.top)};
+                // let bottom_left = {x:parseInt(bird.style.left),y:parseInt(bird.style.top)+bird.height};
+                // let top_right = {x:parseInt(bird.style.left)+bird.width,y:parseInt(bird.style.top)};
+                // let bottom_right = {x:parseInt(bird.style.left)+bird.width,y:parseInt(bird.style.top)+bird.height};
+                let top = parseInt(bird.style.top);
+                let left = parseInt(bird.style.left);
+                let bottom = parseInt(bird.style.top)+bird.height;
+                let right = parseInt(bird.style.left)+bird.width;
                 if (
-                    (bottom_right.x <= this.top_right.x && bottom_right.x >= this.top_left.x && bottom_right.y<= this.bottom_left.y && bottom_right.y>= this.top_left.y ) ||
-                    (top_right.x <= this.top_right.x && top_right.x >= this.top_left.x && top_right.y<= this.bottom_left.y && top_right.y>= this.top_left.y ) ||
-                    (bottom_left.x <= this.top_right.x && bottom_left.x >= this.top_left.x && bottom_left.y<= this.bottom_left.y && bottom_left.y>= this.top_left.y ) ||
-                    (top_left.x <= this.top_right.x && top_left.x >= this.top_left.x && top_left.y<= this.bottom_left.y && top_left.y>= this.top_left.y )
+                    // (bottom_right.x <= this.top_right.x && bottom_right.x >= this.top_left.x && bottom_right.y<= this.bottom_left.y && bottom_right.y>= this.top_left.y ) ||
+                    // (top_right.x <= this.top_right.x && top_right.x >= this.top_left.x && top_right.y<= this.bottom_left.y && top_right.y>= this.top_left.y ) ||
+                    // (bottom_left.x <= this.top_right.x && bottom_left.x >= this.top_left.x && bottom_left.y<= this.bottom_left.y && bottom_left.y>= this.top_left.y ) ||
+                    // (top_left.x <= this.top_right.x && top_left.x >= this.top_left.x && top_left.y<= this.bottom_left.y && top_left.y>= this.top_left.y )
+                    right >= this.left && left <= this.right && bottom>= this.top && top<= this.bottom
                     ){
                     bird.click();
-                    
                 }
-            
-            
             });
             this.boom.src = "imgs/explosion.gif";
             // console.log("boom");
